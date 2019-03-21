@@ -11,6 +11,19 @@ public class A_300_lengthOfLIS {
 
     /**
      * Approach #1 Brute Force [Time Limit Exceeded]
+     * <p>
+     * 最简单的方法是尝试找到所有增加的子序列，然后返回最长增长子序列的最大长度。
+     * 为了做到这一点，我们使用一个递归函数lengthofLISlengthofLIS，
+     * 它从当前元素（对应于curposcurpos）开始返回LIS的长度（包括当前元素）。在每个函数调用中，我们考虑两种情况：
+     * <p>
+     * 当前元素大于LIS中包含的前一个元素。在这种情况下，我们可以在LIS中包含当前元素。
+     * 因此，我们通过包含它来找出获得的LIS的长度。
+     * 此外，我们还通过不包括LIS中的当前元素来找出LIS的长度。
+     * 因此，当前函数调用返回的值是两个长度中的最大值。
+     * <p>
+     * 当前元素小于LIS中包含的前一个元素。在这种情况下，我们不能在LIS中包含当前元素。
+     * 因此，我们通过不包括当前函数调用返回的LIS中的当前元素，仅发现LIS的长度。
+     *
      * @param nums
      * @return
      */
@@ -32,6 +45,7 @@ public class A_300_lengthOfLIS {
 
     /**
      * Approach #2 Recursion with memorization [Memory Limit Exceeded]
+     *
      * @param nums
      * @return
      */
@@ -42,6 +56,7 @@ public class A_300_lengthOfLIS {
         }
         return lengthofLIS(nums, -1, 0, memo);
     }
+
     public int lengthofLIS(int[] nums, int previndex, int curpos, int[][] memo) {
         if (curpos == nums.length) {
             return 0;
@@ -61,6 +76,7 @@ public class A_300_lengthOfLIS {
 
     /**
      * Approach #3 Dynamic Programming [Accepted]
+     *
      * @param nums
      * @return
      */
