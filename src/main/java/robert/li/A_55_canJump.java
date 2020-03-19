@@ -86,4 +86,20 @@ public class A_55_canJump {
         return booleans[nums.length - 1];
     }
 
+    /**
+     * 贪心
+     * @param nums
+     * @return
+     */
+    public boolean canJump1(int[] nums) {
+        int farthestIndex = 0;
+        for (int i = 0; i < nums.length - 1; i++) {
+            farthestIndex = Math.max(farthestIndex, nums[i] + i);
+            if(farthestIndex <= i) {
+                return false;
+            }
+        }
+        return farthestIndex >= nums.length - 1;
+    }
+
 }
