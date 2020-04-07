@@ -1,5 +1,7 @@
 package robert.li;
 
+import java.util.Arrays;
+
 /**
  * @author robert.li
  * @version v1.0.0
@@ -30,5 +32,41 @@ public class A_72_EditDistance {
             }
         }
         return cost[m][n];
+    }
+
+
+    char[] chars1, chars2;
+    int[][] dp;
+    public int minDistance1(String word1, String word2) {
+        chars1 = word1.toCharArray();
+        chars2 = word2.toCharArray();
+        int m = chars1.length;
+        int n = chars2.length;
+        dp = new int[m][n];
+        for (int i = 0; i < dp.length; i++) {
+            Arrays.fill(dp[i], -1);
+        }
+        return helper(chars1.length - 1, chars2.length - 1);
+    }
+
+    int helper(int i, int j) {
+        if(i < 0) return j + 1;
+        if(j < 0) return i + 1;
+        if(dp[i][j] != -1) {
+            return dp[i][j];
+        }
+        if(chars1[i] == chars2[j]) {
+
+            int res = helper(i - 1, j - 1);
+            dp[i][j] = res;
+            return res;
+        } else {
+            int delete = 1 + helper(i - 1, j);
+            int change = 1 + helper(i - 1, j - 1);
+            int add = 1 + helper(i, j - 1);
+            int res = Math.min(delete, Math.min(change, add));
+            dp[i][j] = res;
+            return res;
+        }
     }
 }
