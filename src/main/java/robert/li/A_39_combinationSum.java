@@ -15,7 +15,8 @@ public class A_39_combinationSum {
         int[] arr = { 2, 3, 6, 7 };
         int target = 7;
         A_39_combinationSum a_39_combinationSum = new A_39_combinationSum();
-        a_39_combinationSum.combinationSum(arr, 7);
+        List<List<Integer>> lists = a_39_combinationSum.combinationSum(arr, 7);
+        System.out.println(lists);
     }
 
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
