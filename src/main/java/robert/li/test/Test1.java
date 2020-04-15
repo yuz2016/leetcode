@@ -5,6 +5,8 @@ import com.google.common.collect.Lists;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * @author robert.li
@@ -22,4 +24,37 @@ public class Test1 {
         Integer last = Iterables.getLast(integers);
         System.out.println("last:"+last);
     }
+
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        int length = candidates.length;
+        Arrays.sort(candidates); // 用于剪枝
+        List<List<Integer>> lists = new ArrayList<>();
+        dfs(candidates, length, target, 0, new LinkedList<>(), lists);
+        return lists;
+    }
+
+    private void dfs(
+            int[] candidates,
+            int length,
+            int target,
+            int start,
+            List<Integer> path,
+            List<List<Integer>> res
+            ) {
+        if(target == 0) {
+            res.add(new ArrayList<>(path));
+            return;
+        }
+        for(int i = start; i < length; i++) {
+            if(candidates[i] > target) {
+                break;
+            }
+            int tmp = target - candidates[i];
+            path.add(candidates[i]);
+            dfs(candidates, length, tmp, i, path, res);
+            path.remove(path.size() - 1);
+        }
+    }
+
+
 }
