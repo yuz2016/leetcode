@@ -12,15 +12,7 @@ public class B_21_mergeTwoLists {
         if(l1 == null) return l2;
         if(l2 == null) return l1;
         ListNode head = new ListNode(-1);
-        ListNode next = null;
-        if(l1.val <= l2.val) {
-            head.next = l1;
-            l1 = l1.next;
-        } else {
-            head.next = l2;
-            l2 = l2.next;
-        }
-        next = head.next;
+        ListNode next = head;
         while(l1 != null && l2 != null) {
             if(l1.val <= l2.val) {
                 next.next = l1;
@@ -33,11 +25,7 @@ public class B_21_mergeTwoLists {
             }
         }
         l1 = l1 == null ? l2 : l1;
-        while(l1 != null) {
-            next.next = l1;
-            next = next.next;
-            l1 = l1.next;
-        }
+        next.next = l1;
         return head.next;
     }
 }
