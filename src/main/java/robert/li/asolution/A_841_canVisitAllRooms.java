@@ -29,6 +29,7 @@ public class A_841_canVisitAllRooms {
         visited[start] = true;
         List<Integer> list = rooms.get(start);
         for (Integer room : list) {
+            if(visited[room]) {
                 continue;
             }
             dfs(rooms, visited, room);
