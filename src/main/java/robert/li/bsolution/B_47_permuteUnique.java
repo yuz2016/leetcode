@@ -12,7 +12,7 @@ import java.util.List;
 public class B_47_permuteUnique {
     public static void main(String[] args) {
         B_47_permuteUnique b_47_permuteUnique = new B_47_permuteUnique();
-        List<List<Integer>> lists = b_47_permuteUnique.permuteUnique(new int[] { 1, 1, 2 });
+        List<List<Integer>> lists = b_47_permuteUnique.permuteUnique(new int[] { 1, 1, 1, 2 });
 //        System.out.println(lists);
     }
 
